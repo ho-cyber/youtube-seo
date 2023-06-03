@@ -1,0 +1,23 @@
+main_ans  = final_ans["choices"][0]["text"]
+st.write(main_ans)
+image_prompt  = openai.Completion.create(
+    prompt = "Generate an image prompt for the following SEO blog post"+ main_ans,
+    engine = "text-davinci-003",
+    max_tokens = 500
+
+)
+proompt = image_prompt["choices"][0]["text"]
+
+image = openai.Image.create(
+    prompt = proompt,
+    size = "256x256"
+)
+
+image_url = image["data"][0]["url"]
+
+st.image(image_url)
+st.write(proompt)
+
+st.write("do not know what video to choose?, just enter a topic here!!")
+
+video_topic = st.text_input("Enter a video topic!!")
