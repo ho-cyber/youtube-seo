@@ -52,7 +52,7 @@ openai.api_key = auth_token
 text = transcript.text
 
 final_ans = openai.Completion.create(
-    prompt = "Convert this into an SEO blog post also make it fun to read and intuitive while being seo friendly"+ text,
+    prompt = "Convert this into an SEO blog post also make it fun to read and intuitive while being seo friendly give it a mind-boggling title"+ text,
     engine = "text-davinci-003",
     max_tokens = 500
 )
