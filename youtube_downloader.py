@@ -3,6 +3,7 @@ import streamlit as st
 import pytube
 import openai
 from youtube_search import YoutubeSearch
+import streamlit.components.v1 as components
 
 def download_youtube_video(url):
     try:
@@ -25,6 +26,20 @@ def main():
             download_youtube_video(url)
         else:
             st.warning("Please enter the YouTube video URL.")
+    
+    ga_code = """
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M26G6BJJT0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M26G6BJJT0');
+</script>
+    """
+    st.markdown(ga_code, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
@@ -77,6 +92,3 @@ image_url = image["data"][0]["url"]
 st.image(image_url)
 st.write(proompt)
 
-HtmlFile = open("test.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read()
-print(source_code)
